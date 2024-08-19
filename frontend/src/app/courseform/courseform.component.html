@@ -1,0 +1,61 @@
+<form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+    <mat-card class="form-card">
+      <mat-card-header>
+        <mat-card-title>Add New Course</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="form-group">
+          <input type="file" (change)="onFileChange($event)" />
+          <img *ngIf="imageUrl" [src]="imageUrl" alt="Selected Image" class="image-preview"/>
+        </div>
+  
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Pricing</mat-label>
+            <input matInput formControlName="pricing" type="text" />
+          </mat-form-field>
+        </div>
+  
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Rating</mat-label>
+            <mat-select formControlName="rating">
+              <mat-option *ngFor="let rating of ratings" [value]="rating">{{rating}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+  
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Course Name</mat-label>
+            <input matInput formControlName="courseName" />
+          </mat-form-field>
+        </div>
+  
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Trainee Name</mat-label>
+            <input matInput formControlName="traineeName" />
+          </mat-form-field>
+        </div>
+  
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Course Duration</mat-label>
+            <input matInput formControlName="courseDuration" />
+          </mat-form-field>
+        </div>
+  
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Total Students</mat-label>
+            <input matInput formControlName="totalStudents" type="text" />
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+  

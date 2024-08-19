@@ -1,0 +1,58 @@
+<form (ngSubmit)="onSubmit()" #examForm="ngForm">
+    <div class="form-row">
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Exam Date</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="examDate" name="examDate" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Total Number</mat-label>
+            <input matInput type="number" [(ngModel)]="totalNumber" name="totalNumber" required>
+        </mat-form-field>
+    </div>
+
+    <div class="form-row">
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Subject</mat-label>
+            <input matInput [(ngModel)]="subject" name="subject" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Exam Time</mat-label>
+            <input matInput [(ngModel)]="time" name="time" required>
+        </mat-form-field>
+    </div>
+    
+    <div class="form-row">
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Exam Duration</mat-label>
+            <input matInput [(ngModel)]="examduration" name="examDuration" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Title</mat-label>
+            <input matInput [(ngModel)]="title" name="title" required>
+        </mat-form-field>
+    </div>
+    
+
+    <app-searchablepage [data]="quizes" [props]="props" [(selectedValues)]="selectedValues"
+        (selectedValuesChange)="onSectionChange($event)"></app-searchablepage>
+
+    <div *ngFor="let quiz of select; trackBy: trackByQuiz" class="quiz-container">
+        <h3>Question: {{ quiz.question }}</h3>
+        <ul>
+            <li *ngFor="let option of quiz.options">
+                <label>
+                    <input type="radio" name="{{quiz.id}}" [(ngModel)]="quiz.selectedOption" [value]="option">
+                    Option: {{ option }}
+                </label>
+            </li>
+        </ul>
+        <p>Answer: {{ quiz.answer }}</p>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit" class="submit-button">Submit</button>
+</form>

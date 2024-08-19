@@ -1,0 +1,45 @@
+<div class="container h-100 py-4">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5" style="background-color: #f39c12; height: 400px;">
+            <form style="margin-top: 56px;" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-outline mb-4">
+                    <input type="text" id="form1Example13" class="form-control form-control-lg"
+                        formControlName="email" />
+                    <label class="form-label" for="form1Example13">Email address</label>
+                    <div class="text-danger" *ngIf="email?.invalid && email?.dirty">
+                        <p *ngIf="email?.errors?.['required']">Enter valid email</p>
+                    </div>
+                    <div class="text-danger" *ngIf="email?.invalid && email?.dirty">
+                        <p *ngIf="email?.errors?.['email']">Enter valid email</p>
+
+                    </div>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="password" id="form1Example23" class="form-control form-control-lg"
+                        formControlName="password" />
+                    <label class="form-label" for="form1Example23">Password</label>
+                    <div class="text-danger" *ngIf="password?.invalid && password?.dirty">
+                        <p *ngIf="password?.errors?.['required']">Enter your password</p>
+                    </div>
+                    <div class="text-danger" *ngIf="password?.invalid && password?.dirty">
+                        <p *ngIf="password?.errors?.['minlength']">Password must be at least 2 characters</p>
+                    </div>
+                </div>
+                <div *ngIf="errorMessage" class="alert alert-danger">
+                    {{ errorMessage }}
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                    <a style="text-decoration: none; color: white;">Submit</a>
+                </button>
+
+                <!-- Registration link -->
+                <p class="mt-3 mb-0 text-center">
+                    Don't have an account? <a routerLink="/registerfrom"
+                        style="color: white; text-decoration: none;">Register here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>

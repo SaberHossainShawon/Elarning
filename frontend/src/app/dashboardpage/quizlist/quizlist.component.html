@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="quiz-container">
+                <h1>Quiz List</h1>
+                <div *ngFor="let question of quizzes" class="question">
+                    <span class="question-text">{{ question.question }}</span>
+                    <div class="options">
+                        <label *ngFor="let option of question.options" class="option">
+                            <input type="radio" [name]="question.id" [value]="option">
+                            {{ option }}
+                        </label>
+                    </div>
+                    <div class="answer">
+                        <span>Answer: {{ question.answer }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,162 @@
+.exam-paper-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  
+    .left, .middle, .right {
+      flex: 1;
+    }
+  
+    .middle {
+      text-align: center;
+  
+      div {
+        margin-bottom: 5px;
+      }
+    }
+  
+    .right {
+      text-align: right;
+    }
+  }
+  
+  .exam-paper-body {
+    padding: 10px;
+  
+    .question {
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+  
+    .options {
+      margin-left: 20px;
+  
+      mat-radio-button {
+        display: block;
+        margin-bottom: 5px;
+      }
+    }
+  }
+  
+  .exam-paper-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+  }
+  .options .option {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  //document part-----------------
+  .document-container {
+    max-width: 800px; /* Adjust the width as per your requirement */
+    margin: 0 auto; /* Center align the container */
+    padding: 20px; /* Add some padding for content */
+    background-color: #fff; /* White background */
+    border: 1px solid #ddd; /* Light border around the container */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for 3D effect */
+    border-radius: 8px; /* Rounded corners */
+    font-family: 'Arial', sans-serif; /* Use a clean font */
+    line-height: 1.6; /* Better line spacing */
+}
+
+.document-container h1, 
+.document-container h2, 
+.document-container h3 {
+    margin-top: 20px; /* Space above headings */
+    margin-bottom: 10px; /* Space below headings */
+    font-weight: bold; /* Bold headings */
+}
+
+.document-container p {
+    margin-bottom: 15px; /* Space below paragraphs */
+    text-align: justify; /* Justify text for better readability */
+}
+
+.document-container ul, 
+.document-container ol {
+    padding-left: 20px; /* Indentation for lists */
+    margin-bottom: 15px; /* Space below lists */
+}
+
+.document-container img {
+    max-width: 100%; /* Make images responsive */
+    height: auto;
+    display: block;
+    margin: 0 auto 15px; /* Center images with space below */
+}
+
+//video part-----------------
+/* Container for the video to center it on the page */
+.video-container {
+  display: flex; /* Flexbox layout for easy centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100%; /* Full height of the container */
+  padding: 20px; /* Add some padding around the video */
+}
+
+/* Iframe specific styling for responsive design */
+.video-container iframe {
+  max-width: 100%; /* Make sure the video is responsive */
+  height: auto; /* Adjust the height automatically */
+  border-radius: 8px; /* Optional: Add rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+}
+
+//done page-------------------
+mat-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+mat-step h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+mat-step p {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+mat-step button {
+  margin: 10px;
+}
+
+mat-step .correct-answers {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 600px;
+}
+
+mat-step .correct-answers p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+mat-step .action-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+mat-step .action-buttons button {
+  margin: 0 10px;
+}
+
+
+
+
+  
+  

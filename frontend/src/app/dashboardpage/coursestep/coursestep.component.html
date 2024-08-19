@@ -1,0 +1,55 @@
+<div class="form-container">
+  <form [formGroup]="contentForm" (ngSubmit)="onSubmit()">
+    <h2 style="text-align: center;">Add Content</h2>
+    
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label for="stepNumber">Step Number</mat-label>
+        <input matInput id="stepNumber" formControlName="stepnumber" type="text" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Courses</mat-label>
+        <mat-select formControlName="course">
+          <mat-option *ngFor="let course of courses" [value]="course.id">{{ course.courseName }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Content Type</mat-label>
+        <mat-select  multiple (selectionChange)="onContentTypeChange($event.value)">
+          <mat-option *ngFor="let type of contentTypes" [value]="type">{{ type }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group" *ngIf="showExamPaperField">
+      <mat-form-field appearance="fill">
+        <mat-label>Exam Paper</mat-label>
+        <mat-select formControlName="quizExamPapers">
+          <mat-option *ngFor="let paper of examPapers" [value]="paper.id">{{ paper.subject }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group" *ngIf="showContentField">
+      <mat-form-field appearance="fill">
+        <mat-label for="content">Content</mat-label>
+        <textarea matInput id="content" formControlName="content"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group" *ngIf="showVideoLinkField">
+      <mat-form-field appearance="fill">
+        <mat-label for="videoLink">Video Link</mat-label>
+        <input matInput id="videoLink" formControlName="videoLink" type="text" />
+      </mat-form-field>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

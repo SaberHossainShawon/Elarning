@@ -1,0 +1,69 @@
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px 0;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  div[formArrayName="options"] {
+    margin-bottom: 20px;
+  }
+  
+  div[formArrayName="options"] div {
+    margin-bottom: 10px;
+  }
+  
+  div[formArrayName="options"] label {
+    margin-bottom: 2px;
+  }
+  
+  div[formArrayName="options"] input {
+    width: calc(100% - 40px); /* Adjust the width according to the total width of the input and remove button */
+    display: inline-block;
+  }
+  
+  button[type="button"] {
+    background-color: #28a745;
+  }
+  
+  button[type="button"]:hover {
+    background-color: #218838;
+  }
+  

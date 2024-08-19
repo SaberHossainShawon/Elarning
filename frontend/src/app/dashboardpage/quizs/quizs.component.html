@@ -1,0 +1,18 @@
+<form [formGroup]="quizForm" (ngSubmit)="onSubmit()">
+    <label for="question">Question:</label>
+    <input id="question" formControlName="question">
+  
+    <div formArrayName="options">
+      <div *ngFor="let option of options.controls; let i=index">
+        <label for="option-{{i}}">Option {{i + 1}}:</label>
+        <input id="option-{{i}}" [formControlName]="i">
+      </div>
+    </div>
+    <button type="button" (click)="addOption()">Add Option</button>
+  
+    <label for="answer">Answer:</label>
+    <input id="answer" formControlName="answer">
+  
+    <button type="submit">Submit</button>
+  </form>
+  

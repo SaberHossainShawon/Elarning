@@ -1,0 +1,95 @@
+<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+</button>
+<mat-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Video</ng-template>
+            <div *ngIf="videoLink">
+                <iframe [src]="videoLink" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Document</ng-template>
+            <div *ngIf="documentContent">
+                <div class="document-container" [innerHTML]="documentContent"></div>
+            </div>
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup">
+        <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel>Exam Paper</ng-template>
+
+            <div *ngIf="quizExamPapers">
+                <div class="exam-paper-header">
+                    <div class="left">Quiz Code: {{ quizExamPapers.id }}</div>
+                    <div class="middle">
+                        <div>Subject: {{ quizExamPapers.subject }}</div>
+                        <div>Title: {{ quizExamPapers.title }}</div>
+                        <div>Duration: {{ quizExamPapers.examduration }}</div>
+                    </div>
+                    <div class="right">Total: {{ quizExamPapers.totalnumber }}</div>
+                </div>
+
+                <div class="exam-paper-body">
+                    <div *ngFor="let question of quizExamPapers.questions let i=index" class="question">
+                        <span class="question-text">{{i+1}}.{{ question.question }}</span>
+                        <div class="options">
+                            <label *ngFor="let option of question.options" class="option">
+                                <input type="radio" [name]="question.id" [value]="option"
+                                    [checked]="option === question.selectedOption"
+                                    (change)="onOptionSelected(question.id, option)">
+                                {{ option }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exam-paper-footer">
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button style="background-color: blue; color: aliceblue;" (click)="submitAnswers()"
+                        matStepperNext>Submit</button>
+                </div>
+            </div>
+            <div *ngIf="!quizExamPapers">
+                <p>Loading exam paper...</p>
+            </div>
+        </form>
+    </mat-step>
+
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <div *ngIf="score !== undefined">
+            <h2>{{ score >= 40 ? 'Congratulations You Are Pass!' : 'Fail' }}</h2>
+            <p>Your Score: {{ score }}%</p>
+            <button mat-button (click)="showAnswers()">View Correct Answers</button>
+        </div>
+
+        <div *ngIf="showAnswerSection">
+            <h3>Correct Answers:</h3>
+            <div *ngFor="let question of quizExamPapers.questions let i=index">
+                <p><strong>Question {{i+1}}:</strong> {{question.question}}</p>
+                <p><strong>Your Answer:</strong> {{question.selectedOption}}</p>
+                <p><strong>Correct Answer:</strong> {{question.correctOption}}</p>
+            </div>
+        </div>
+        
+        
+
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step>
+
+
+
+</mat-stepper>

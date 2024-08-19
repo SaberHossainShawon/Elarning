@@ -1,0 +1,78 @@
+<div class="container h-100 py-3">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-10 col-lg-8 col-xl-7">
+            <div class="combined-box d-flex flex-row justify-content-between align-items-start">
+                <div class="info-section p-3">
+                    <h3>Information</h3>
+                    <p><strong>Bkash Merchant Number:</strong> 01XXXXXXXXX</p>
+                    <p><strong>Course Amounts:</strong></p>
+                    <ul>
+                        <li>Java: 200 TK</li>
+                        <li>C++: 300 TK</li>
+                        <li>Gave: 250 TK</li>
+                        <li>c#: 200 TK</li>
+                        <li>Database: 250 TK</li>
+                    </ul>
+                </div>
+                <div class="payment-form p-3">
+                    <h2 class="mb-3">Payment Form</h2>
+                    <form #regForm="ngForm" (ngSubmit)="regForm.form.valid && submitPayment(regForm)">
+                        <div class="form-group mb-3">
+                            <label for="email">Email</label>
+                            <input type="Email" class="form-control" id="email" name="email" [(ngModel)]="formdata.email"
+                                #email="ngModel" required>
+                            <div *ngIf="email.invalid && email.dirty" class="alert alert-danger">
+                                <p *ngIf="email.errors?.['required']">Email is required</p>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="paymenttype">Payment Category</label>
+                            <select class="form-control" id="paymenttype" name="paymenttype"
+                                [(ngModel)]="formdata.paymentCategory" required (change)="onPaymentCategoryChange($event)">
+                                <option value="">Select Payment Category</option>
+                                <option value="bkash">Bkash</option>
+                                <option value="nogod">Nogod</option>
+                                <option value="card">Card Payment</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3" *ngIf="formdata.paymentCategory === 'bkash' || formdata.paymentCategory === 'nogod'">
+                            <label for="number">Phone Number</label>
+                            <input type="text" class="form-control" id="number" name="number"
+                                [(ngModel)]="formdata.number" #number="ngModel" required>
+                            <div *ngIf="number.invalid && number.dirty" class="alert alert-danger">
+                                <p *ngIf="number.errors?.['required']">Phone Number is required</p>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3" *ngIf="formdata.paymentCategory === 'bkash' || formdata.paymentCategory === 'nogod'">
+                            <label for="transationid">Transaction ID</label>
+                            <input type="text" class="form-control" id="transationid" name="transationid"
+                                [(ngModel)]="formdata.transationid" #transationid="ngModel" required>
+                            <div *ngIf="transationid.invalid && transationid.dirty"
+                                class="alert alert-danger">
+                                <p *ngIf="transationid.errors?.['required']">Transaction ID is required</p>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3" *ngIf="formdata.paymentCategory === 'card'">
+                            <label for="cardNumber">Card Number</label>
+                            <input type="text" class="form-control" id="cardNumber" name="cardNumber"
+                                [(ngModel)]="formdata.cardNumber" #cardNumber="ngModel" required>
+                            <div *ngIf="cardNumber.invalid && cardNumber.dirty" class="alert alert-danger">
+                                <p *ngIf="cardNumber.errors?.['required']">Card Number is required</p>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="amount">Amount</label>
+                            <input type="text" class="form-control" id="amount" name="amount" [value]="formdata.amount"
+                             [(ngModel)]="formdata.amount" readonly>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" style="margin-right:5px;"
+                                >Submit Payment</button>
+                            <button type="button" class="btn btn-secondary" (click)="cancelPayment()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

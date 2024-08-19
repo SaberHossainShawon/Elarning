@@ -1,0 +1,49 @@
+.exam-paper-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  
+    .left, .middle, .right {
+      flex: 1;
+    }
+  
+    .middle {
+      text-align: center;
+  
+      div {
+        margin-bottom: 5px;
+      }
+    }
+  
+    .right {
+      text-align: right;
+    }
+  }
+  
+  .exam-paper-body {
+    padding: 10px;
+  
+    .question {
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+  
+    .options {
+      margin-left: 20px;
+  
+      mat-radio-button {
+        display: block;
+        margin-bottom: 5px;
+      }
+    }
+  }
+  
+  .exam-paper-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+  }
+  
